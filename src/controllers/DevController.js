@@ -1,6 +1,27 @@
-const axios =  require('axios');
-const Dev =  require('../model/Dev');
+// Imports
+const axios =  require('axios'); // Axios para chamadas assincronas
+const Dev =  require('../model/Dev'); // importando a conexão com banco
 module.exports = {
+
+    async index(req,res){
+        const {user} = req.headers;
+
+        const loggedUser = await Dev.findById(user);
+
+        const users = await Dev.find({
+
+            $and:[ // "$and" aplica todos os filtros ao mesmo tempo
+
+                {_id:{$ne:user}}, // "$ne" = notequal (diferente) no mongo db
+                { _id: { $nin: loggedUser.likes } },  // "$nin" =  notin ( não esteja)  
+                { _id: { $nin: loggedUser.dislikes } },  // "$nin" =  notin ( não esteja)  
+            ],
+            
+        });
+        return res.json(users);
+
+    },
+
     async store(req,res){
         // Classe assincrona se utiliza "async" "await"
         // Declarando username como corpo da requisição
