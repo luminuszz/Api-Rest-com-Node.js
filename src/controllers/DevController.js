@@ -13,10 +13,10 @@ module.exports = {
             $and:[ // "$and" aplica todos os filtros ao mesmo tempo
 
                 {_id:{$ne:user}}, // "$ne" = notequal (diferente) no mongo db
-                { _id: { $nin: loggedUser.likes } },  // "$nin" =  notin ( não esteja)  
-                { _id: { $nin: loggedUser.dislikes } },  // "$nin" =  notin ( não esteja)  
+                { _id: { $nin: loggedUser.likes } },  // "$nin" =  notin ( não esteja)
+                { _id: { $nin: loggedUser.dislikes } },  // "$nin" =  notin ( não esteja)
             ],
-            
+
         });
         return res.json(users);
 
@@ -28,8 +28,8 @@ module.exports = {
         const {username} = req.body;
 
         // Criando variavel userExist para receber valor do usuario solicitado
-        
-        // utlizando metodo do mongobd "findOne" para achar o usuario 
+
+        // utlizando metodo do mongobd "findOne" para achar o usuario
         const userExist = await Dev.findOne({user: username}); // Utilizando await por ser assincrono
 
 
@@ -50,7 +50,7 @@ module.exports = {
 
         // Chamando model de conexão com banco de dados
 
-    
+
         const dev = await Dev.create({ // Criando variavel "Dev" para armazenar a array de dados
 
             // Declarando dados a ser puxados dentro da array
@@ -60,12 +60,12 @@ module.exports = {
             avatar,
 
         })
-      
+
         // Retornando JSON com os dados solicitadps da API
         return res.json(dev);
 
 
-       
+
 
     }
 
