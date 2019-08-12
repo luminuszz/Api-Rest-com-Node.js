@@ -1,10 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'; // Importanto React.js
+import './App.css'; //  Importando CSS
+import Login from './pages/Login.js'
+function App() { // Componente global
   return (
- <h1>sad</h1>
+    <Login/>
   );
 }
 
