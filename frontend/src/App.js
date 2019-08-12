@@ -4,6 +4,7 @@ import Login from './pages/Login.js'
 function App() { // Componente global
   return (
     <Login/>
+
   );
 }
 
