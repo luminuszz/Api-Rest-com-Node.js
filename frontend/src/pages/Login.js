@@ -11,7 +11,10 @@ export default function Login() { // Componente de login
 
       function handleSubmit(e) { // Function para impedir o submit do formulario
                 e.preventDefault();
+
                 console.log(username);
+
+                history.push('/main'); //  Metodo history direciona a page desejada
 
           }
    return  ( // Html
