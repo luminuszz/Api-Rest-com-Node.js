@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import FormPost from './Form';
 import api from '../services/api';
-import { Button } from 'react-bootstrap'
+import { striped, bordered, condensed,Button } from 'react-bootstrap'
 
 
 
@@ -26,7 +26,7 @@ export default function Teste() {
          const email = teste[i].email;
          const davi = JSON.stringify(nome);
          const daviEmail = JSON.stringify(email);
-         let lista = document.createElement('p');
+         let lista = document.createElement('td');
          var textnode = document.createTextNode(davi);
          lista.appendChild(textnode);
          document.getElementById("mandar").appendChild(lista);
@@ -52,11 +52,26 @@ export default function Teste() {
    }
    return (
 
-      <div id="mandar">
-         <div></div>
+      <div >
+          <Button bsStyle="primary" onClick={getTeste}>Puxar</Button  >
+          <Table striped bordered condensed hover>
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+    </tr>
+  </thead>
+  <tbody >
+    <tr id="mandar">
 
 
-         <Button bsStyle="primary" onClick={getTeste}>Puxar</Button  >
+    </tr>
+
+
+  </tbody>
+</Table>
+
+
       </div>
 
    )
