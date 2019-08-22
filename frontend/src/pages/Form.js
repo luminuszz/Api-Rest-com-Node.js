@@ -11,15 +11,17 @@ export default function FormPost({ history }) {
 
    const [username, setUsername] = useState('');
    const [apelido, setApelido] = useState('');
-
+   const [email , setEmail] = useState('');
    async function submitClick(e) {
       e.preventDefault();
 
-      const response = await api.post('https://jsonplaceholder.typicode.com/posts', {
+      const data = await api.post('https://jsonplaceholder.typicode.com/posts', {
          username,
-         apelido
+         apelido,
+         email
 
       })
+      console.log(data.data);
 
       history.push("/tabela");
 
@@ -31,7 +33,7 @@ export default function FormPost({ history }) {
 
 
          <form action="#" onSubmit={submitClick}>
-            <img src={logoAbitat} alt="abitat"/>
+            <img src={logoAbitat} alt="abitat" />
             <input type="text" placeholder="Informe seu Nome"
                value={username}
                onChange={e => setUsername(e.target.value)}
@@ -40,7 +42,12 @@ export default function FormPost({ history }) {
 
             <input type="text" placeholder="Informe seu Apelido"
                value={apelido}
-               onChange={e => setApelido(e.target.value)}/>
+               onChange={e => setApelido(e.target.value)} />
+
+            <input type="text" placeholder="Informe seu Email"
+               value={email}
+               onChange={e => setEmail(e.target.value)} />
+
 
 
             <button>Enviar</button>
